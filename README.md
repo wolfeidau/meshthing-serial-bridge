@@ -22,13 +22,15 @@ Run `sniffer-bridge` in a terminal, if you omit the `-port` it will search for a
 ./sniffer-bridge -port=/dev/tty.usbmodem1411
 ```
 
+Then run wireshark in another terminal.
+
 ```
 tshark -i /tmp/wireshark
 ```
 
 # links
 
-Meshthing 
+Meshthing sniffer code https://github.com/geekscape/contiki/tree/example-meshthing-sniffer/examples/meshthing/sniffer
 
 # licence
 
