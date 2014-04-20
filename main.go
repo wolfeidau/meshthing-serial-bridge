@@ -99,6 +99,8 @@ func main() {
 
 	buf := make([]byte, 1024)
 
+	// main read and write loop which converts the raw packet from the serial port to
+	// a pcap packet and writes it out the unix fifo.
 	for {
 		plen, err := r.ReadByte()
 
@@ -106,17 +108,12 @@ func main() {
 			log.Fatalf("Error reading packet length: %s", err)
 		}
 
-		log.Printf("%d\n", int(plen))
-
-		br, err := io.ReadFull(r, buf[:plen])
+		_, err = io.ReadFull(r, buf[:plen])
 
 		if err != nil {
 			log.Fatalf("Error reading packet: %s", err)
 		}
-		log.Printf("%d\n", br)
-		//		log.Printf("%d %v\n", br, buf[:plen])
 
-		//bw, err := f.Write(buf[:plen])
 		pkt := pcap.NewPacket(buf[:plen], uint32(plen))
 
 		err = w.Write(pkt)
@@ -124,7 +121,6 @@ func main() {
 		if err != nil {
 			log.Fatalf("Error writing packet: %s", err)
 		}
-
 	}
 }
 
