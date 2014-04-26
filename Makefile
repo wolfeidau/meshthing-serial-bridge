@@ -11,7 +11,4 @@ all: clean
 clean:
 	rm sniffer-bridge || true
 
-dist-osx: 
-	$(shell goxc -arch="amd64" -os="darwin" -d=pkg -pv="${VERSION}" -n=sniffer-bridge -build-ldflags="-X main.GitCommit ${GIT_COMMIT}${GIT_DIRTY}" go-install xc)
-
 .PHONY: all	
