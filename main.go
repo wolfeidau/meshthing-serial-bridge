@@ -16,6 +16,7 @@ import (
 )
 
 var portFlag = flag.String("port", "", "optional path to serial device")
+var baudFlag = flag.Int("baud", 38400, "optional baud of the serial device")
 var versionFlag = flag.Bool("version", false, "print the version information")
 
 func findArduino() string {
@@ -51,7 +52,7 @@ func main() {
 
 	// Find the device that represents the arduino serial
 	// connection.
-	port, err := rs232.OpenPort(findArduino(), 38400, rs232.S_8N1)
+	port, err := rs232.OpenPort(findArduino(), *baudFlag, rs232.S_8N1)
 
 	if err != nil {
 		log.Fatalf("Err opening port: %s", err)

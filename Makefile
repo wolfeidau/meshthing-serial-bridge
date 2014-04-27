@@ -6,9 +6,9 @@ GIT_DIRTY := $(shell test -n "`git status --porcelain`" && echo "+CHANGES" || tr
 VERSION := $(shell grep "const Version " version.go | sed -E 's/.*"(.+)"$$/\1/' )
 
 all: clean
-	$(shell go build -ldflags "-X main.GitCommit ${GIT_COMMIT}${GIT_DIRTY}" -o sniffer-bridge)
+	scripts/build.sh
 
 clean:
-	rm sniffer-bridge || true
+	rm bin/sniffer-bridge &> /dev/null || true
 
 .PHONY: all	

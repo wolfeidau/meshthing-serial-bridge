@@ -1,2 +1,4 @@
 sniffer-bridge
+bin/sniffer-bridge
 pkg
+.gopath
