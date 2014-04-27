@@ -1,14 +1,12 @@
-GOPATH := $(shell echo $$GOPATH)
-
-# Get the git commit
-GIT_COMMIT := $(shell git rev-parse HEAD)
-GIT_DIRTY := $(shell test -n "`git status --porcelain`" && echo "+CHANGES" || true)
-VERSION := $(shell grep "const Version " version.go | sed -E 's/.*"(.+)"$$/\1/' )
+prefix := "/usr/local"
 
 all: clean
 	scripts/build.sh
 
+install:
+	install -m 0755 sniffer-bridge $(prefix)/bin
+
 clean:
 	rm bin/sniffer-bridge &> /dev/null || true
 
-.PHONY: all	
+.PHONY: all	clean install

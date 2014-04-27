@@ -6,12 +6,22 @@ This program reads packets from the serial port and writes them to a unix pipe.
 
 This program expects packets to be encoded with a single byte length prefix, then the packet data.
 
-This program creates a fifo which is located at "/tmp/wireshark" by default, this can be used by wireshark as a capture source.
+This program creates a fifo which is located at `/tmp/wireshark` at the moment, this can be used by wireshark as a capture source.
+
+# building
+
+Ensure you have golang 1.2 installed and just run make.
+
+```
+make
+```
+
+Binary is moved to `bin/sniffer-bridge`
 
 # usage 
 
 ```
-Usage of ./sniffer-bridge:
+Usage of sniffer-bridge:
   -port="": optional path to serial device
   -version=false: print the version information
 ```
@@ -19,7 +29,7 @@ Usage of ./sniffer-bridge:
 Run `sniffer-bridge` in a terminal, if you omit the `-port` it will search for a usbserial device and use that (OSX only at the moment).
 
 ```
-./sniffer-bridge -port=/dev/tty.usbmodem1411
+sniffer-bridge -port=/dev/tty.usbmodem1411
 ```
 
 Then run wireshark in another terminal.
