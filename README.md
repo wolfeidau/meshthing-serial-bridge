@@ -1,4 +1,4 @@
-# meshthing-serial-bridge
+# meshthing-serial-bridge [![Build Status](https://drone.io/github.com/wolfeidau/meshthing-serial-bridge/status.png)](https://drone.io/github.com/wolfeidau/meshthing-serial-bridge/latest)
 
 This program reads packets from the serial port and writes them to a unix pipe.
 
